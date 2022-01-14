@@ -1,0 +1,5 @@
+/.env
+/assets/img/*.jpg
+/cmd/investments-cryptanalysis-parsing/out.json
+.idea
+/configs/.env
