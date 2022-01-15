@@ -1,4 +1,4 @@
-package internal
+package Extensions
 
 import (
 	"math/rand"

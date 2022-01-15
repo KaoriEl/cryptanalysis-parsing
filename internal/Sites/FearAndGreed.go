@@ -1,10 +1,12 @@
-package internal
+package Sites
 
 import (
 	"github.com/fatih/color"
 	"github.com/geziyor/geziyor"
 	"github.com/geziyor/geziyor/client"
 	"github.com/pkg/errors"
+	"main/internal/Extensions"
+	"main/internal/Structures"
 	"os"
 	"regexp"
 )
@@ -24,11 +26,11 @@ func ParsingFearAndGreed(g *geziyor.Geziyor, r *client.Response) {
 		var re = regexp.MustCompile(`(?:\(['"]?)(.*?)(?:['"]?\))`)
 		var str = href
 		if len(re.FindStringIndex(str)) > 0 {
-			data := &ParsingData{re.FindStringSubmatch(str)[1]}
+			data := &Structures.ParsingData{ImageUrl: re.FindStringSubmatch(str)[1]}
 			color.New(color.FgGreen).Add(color.Bold).Println("Image url: " + data.ImageUrl)
 			color.New(color.FgHiMagenta).Add(color.Bold).Println("Starting file upload...")
-			fileName := "/FearAndGreed" + RandStringRunes(10) + ".jpg"
-			Index(data.ImageUrl, fileName)
+			fileName := "/FearAndGreed" + Extensions.RandStringRunes(10) + ".jpg"
+			Extensions.Index(data.ImageUrl, fileName)
 		} else {
 			color.New(color.FgRed).Add(color.Underline).Println(errors.New("Couldn't find image address"))
 		}

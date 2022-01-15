@@ -1,4 +1,4 @@
-package internal
+package Extensions
 
 import (
 	"github.com/cheggaaa/pb/v3"

@@ -1,4 +1,4 @@
-package internal
+package Extensions
 
 import (
 	"github.com/fatih/color"
@@ -11,7 +11,7 @@ import (
 )
 
 func Index(ImageUrl string, fileName string) {
-	filePrefix, _ := filepath.Abs("/var/www/investments-cryptanalysis-parsing/assets/img") // path from the working directory
+	filePrefix, _ := filepath.Abs("/var/www/investments-cryptanalysis-parsing/assets/img/tmp") // path from the working directory
 	fileName = filePrefix + fileName
 	URL := ImageUrl
 	err := downloadFile(URL, fileName)

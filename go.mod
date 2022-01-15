@@ -10,6 +10,7 @@ require (
 	github.com/fatih/color v1.13.0
 	github.com/geziyor/geziyor v0.0.0-20211211110410-34d17a2d3d5a // indirect
 	github.com/go-kit/kit v0.12.0 // indirect
+	github.com/gorilla/mux v1.8.0 // indirect
 	github.com/joho/godotenv v1.4.0
 	github.com/pkg/errors v0.9.1
 	github.com/prometheus/common v0.32.1 // indirect
