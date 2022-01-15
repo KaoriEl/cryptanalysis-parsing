@@ -1,21 +1,16 @@
-package internal
+package Parsing
 
 import (
 	"github.com/fatih/color"
 	"github.com/joho/godotenv"
 	"github.com/pkg/errors"
+	"main/internal/Sites"
+	"main/internal/Structures"
+	"main/pkg"
 	"os"
 	"path/filepath"
 	"sync"
 )
-
-type ParsingData struct {
-	ImageUrl string
-}
-
-type Sites struct {
-	Url []string
-}
 
 func initEnv() {
 	filePrefix, _ := filepath.Abs("/var/www/investments-cryptanalysis-parsing/configs") // path from the working directory
@@ -26,9 +21,9 @@ func initEnv() {
 }
 
 func Parsing() []string {
-	DeleteAll()
+	pkg.ClearDir("/var/www/investments-cryptanalysis-parsing/assets/img/tmp/")
 	initEnv()
-	sites := Sites{
+	sites := &Structures.Sites{
 		Url: []string{
 			os.Getenv("FearAndGreed"),
 			os.Getenv("Finviz"),
@@ -45,26 +40,34 @@ func Parsing() []string {
 		case os.Getenv("FearAndGreed"):
 			go func() {
 				defer wg.Done()
-				FearAndGreed(urlGo)
+				Sites.FearAndGreed(urlGo)
 			}()
 		case os.Getenv("Finviz"):
 			go func() {
 				defer wg.Done()
-				Finviz(urlGo)
+				Sites.Finviz(urlGo)
 			}()
 		case os.Getenv("FinanceYahoo"):
 			go func() {
 				defer wg.Done()
-				FinanceYahoo(urlGo)
+				Sites.FinanceYahoo(urlGo)
 			}()
 		case os.Getenv("Dropstab"):
 			go func() {
 				defer wg.Done()
-				Dropstab(urlGo)
+				Sites.Dropstab(urlGo)
 			}()
 		}
 
 	}
+	wg.Wait()
+
+	wg.Add(1)
+	go func() {
+		defer wg.Done()
+		pkg.ClearDir("/var/www/investments-cryptanalysis-parsing/assets/img/")
+		pkg.ReadDirAndCopy("/var/www/investments-cryptanalysis-parsing/assets/img/tmp/", "/var/www/investments-cryptanalysis-parsing/assets/img/")
+	}()
 	wg.Wait()
 
 	return []string{

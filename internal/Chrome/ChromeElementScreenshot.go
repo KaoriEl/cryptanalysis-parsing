@@ -1,4 +1,4 @@
-package internal
+package Chrome
 
 import (
 	"context"
@@ -6,14 +6,15 @@ import (
 	"github.com/fatih/color"
 	"github.com/pkg/errors"
 	"io/ioutil"
+	"main/internal/Extensions"
 	"path/filepath"
 	"time"
 )
 
 func Screeenshot(ctx context.Context, urlGo string, filenames []string, elements []string, cancel context.CancelFunc) {
-	go Progress(10)
+	go Extensions.Progress(10)
 	color.New(color.FgHiWhite).Add(color.Bold).Println("Defining filePrefix...")
-	filePrefix, _ := filepath.Abs("/var/www/investments-cryptanalysis-parsing/assets/img") // path from the working directory
+	filePrefix, _ := filepath.Abs("/var/www/investments-cryptanalysis-parsing/assets/img/tmp") // path from the working directory
 	color.New(color.FgHiWhite).Add(color.Bold).Println("Create buffer...")
 	var imageBuf []byte
 	color.New(color.FgHiWhite).Add(color.Bold).Println("Run chrome with context...")

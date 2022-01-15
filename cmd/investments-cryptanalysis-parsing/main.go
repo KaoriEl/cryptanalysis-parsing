@@ -1,8 +1,7 @@
 package main
 
 import (
-	"github.com/fatih/color"
-	"main/internal"
+	"main/internal/Server"
 	"sync"
 )
 
@@ -11,11 +10,7 @@ func main() {
 	wg.Add(1)
 	go func() {
 		defer wg.Done()
-		internal.StartServer()
+		Server.StartServer()
 	}()
-	parsing := internal.Parsing()
-	for _, end := range parsing {
-		color.New(color.FgCyan).Add(color.Underline).Println(end)
-	}
 	wg.Wait()
 }
