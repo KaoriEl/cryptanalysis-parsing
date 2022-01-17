@@ -7,3 +7,11 @@ type ParsingData struct {
 type Sites struct {
 	Url []string
 }
+
+type RegexSites struct {
+	DropstabBtc   string
+	DropstabLongs string
+	FearAndGreed  string
+	FinanceYahoo  string
+	Finviz        string
+}

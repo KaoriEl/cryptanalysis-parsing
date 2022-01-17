@@ -1,5 +1,9 @@
 package Structures
 
 type WidgetScreenshots struct {
-	FilesUrl []string
+	DropstabBtc   string
+	DropstabLongs string
+	FearAndGreed  string
+	FinanceYahoo  string
+	Finviz        string
 }
