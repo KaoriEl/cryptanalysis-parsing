@@ -12,7 +12,7 @@ Docker build stage:
     - cp ${ENV_STAGE} .env
     - docker login -u gitlab-ci-token -p ${CI_JOB_TOKEN} ${CI_REGISTRY}
     - echo "Build widgets"
-    - docker build -t ${CI_REGISTRY}/${CI_PROJECT_PATH}/${CI_PROJECT_NAME}-widgets:stage -f ./build/Dockerfile .
+    - docker build -t ${CI_REGISTRY}/${CI_PROJECT_PATH}/${CI_PROJECT_NAME}-widgets:stage -f ./build/package/Dockerfile .
     - echo "Push widgets"
     - docker push ${CI_REGISTRY}/${CI_PROJECT_PATH}/${CI_PROJECT_NAME}-widgets:stage
   tags:
@@ -42,7 +42,7 @@ Docker build prod:
     - cp ${ENV_PROD} .env
     - docker login -u gitlab-ci-token -p ${CI_JOB_TOKEN} ${CI_REGISTRY}
     - echo "Build widgets"
-    - docker build -t ${CI_REGISTRY}/${CI_PROJECT_PATH}/${CI_PROJECT_NAME}-widgets:prod -f ./build/Dockerfile .
+    - docker build -t ${CI_REGISTRY}/${CI_PROJECT_PATH}/${CI_PROJECT_NAME}-widgets:prod -f ./build/package/Dockerfile .
     - echo "Push widgets"
     - docker push ${CI_REGISTRY}/${CI_PROJECT_PATH}/${CI_PROJECT_NAME}-widgets:prod
   tags:
