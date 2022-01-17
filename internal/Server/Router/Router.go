@@ -1,6 +1,7 @@
 package Router
 
 import (
+	"encoding/json"
 	"fmt"
 	"github.com/gorilla/mux"
 	"main/internal/API/Controllers"
@@ -8,14 +9,20 @@ import (
 )
 
 func Router(router *mux.Router) {
-	router.HandleFunc("/api/v1/get_img", func(w http.ResponseWriter, r *http.Request) {
-		files := Controllers.GetWidgets()
-		fmt.Fprintf(w, string(files))
 
-	})
+	router.HandleFunc("/api/v1/get_img", func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Access-Control-Allow-Origin", "*")
+
+		w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
+
+		files := Controllers.GetWidgets()
+
+		json.NewEncoder(w).Encode(files)
+
+	}).Methods("GET", "OPTIONS")
 	router.HandleFunc("/api/v1/Upd_img", func(w http.ResponseWriter, r *http.Request) {
 		status := Controllers.UpdWidgets()
 		fmt.Fprintf(w, status)
 
-	})
+	}).Methods("GET", "OPTIONS")
 }

@@ -1,21 +1,33 @@
 package Services
 
 import (
-	"encoding/json"
-	"fmt"
 	"main/internal/Structures"
 	"main/pkg"
 )
 
-func GetWidgets() []byte {
+func GetWidgets() *Structures.WidgetScreenshots {
 	files := pkg.OnlyReadDir("/var/www/investments-cryptanalysis-parsing/assets/img")
-	screenshots := &Structures.WidgetScreenshots{
-		FilesUrl: files.Files,
+	var ctx = []string{
+		"Dropstab-btcDominance",
+		"Dropstab-longsShorts",
+		"FearAndGreed",
+		"FinanceYahoo",
+		"Finviz",
 	}
-	b, err := json.Marshal(screenshots)
-	if err != nil {
-		fmt.Println(err)
-	}
-	return b
+	var screenshots *Structures.WidgetScreenshots
+	m := map[string]string{}
+	for _, f := range files.Files {
+		for _, c := range ctx {
+			m = FindSubstr(f, c, m)
+		}
 
+	}
+	screenshots = &Structures.WidgetScreenshots{
+		DropstabBtc:   m["Dropstab-btcDominance"],
+		DropstabLongs: m["Dropstab-longsShorts"],
+		FearAndGreed:  m["FearAndGreed"],
+		FinanceYahoo:  m["FinanceYahoo"],
+		Finviz:        m["Finviz"],
+	}
+	return screenshots
 }

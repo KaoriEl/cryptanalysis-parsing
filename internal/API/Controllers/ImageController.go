@@ -1,8 +1,11 @@
 package Controllers
 
-import "main/internal/API/Services"
+import (
+	"main/internal/API/Services"
+	"main/internal/Structures"
+)
 
-func GetWidgets() []byte {
+func GetWidgets() *Structures.WidgetScreenshots {
 	return Services.GetWidgets()
 }
 
