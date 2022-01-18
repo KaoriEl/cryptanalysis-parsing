@@ -43,7 +43,7 @@ func OnlyReadDir(path string) Files {
 	var ctx Files
 	for _, f := range files {
 		if f.Name() != "tmp" && f.Name() != ".gitkeep" {
-			ctx.Files = append(ctx.Files, "golang/assets/img/"+f.Name())
+			ctx.Files = append(ctx.Files, "/golang/assets/img/"+f.Name())
 		}
 	}
 	return ctx
