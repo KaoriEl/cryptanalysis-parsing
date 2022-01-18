@@ -29,6 +29,7 @@ func Parsing() []string {
 			os.Getenv("Finviz"),
 			os.Getenv("FinanceYahoo"),
 			os.Getenv("Dropstab"),
+			os.Getenv("FearAndGreedIndex"),
 		},
 	}
 
@@ -57,6 +58,11 @@ func Parsing() []string {
 				defer wg.Done()
 				Sites.Dropstab(urlGo)
 			}()
+		case os.Getenv("FearAndGreedIndex"):
+			go func() {
+				defer wg.Done()
+				Sites.FearAndGreedIndex(urlGo)
+			}()
 		}
 
 	}
@@ -75,5 +81,6 @@ func Parsing() []string {
 		"Finished parsing: " + os.Getenv("Finviz"),
 		"Finished parsing: " + os.Getenv("FinanceYahoo"),
 		"Finished parsing: " + os.Getenv("Dropstab"),
+		"Finished parsing: " + os.Getenv("FearAndGreedIndex"),
 	}
 }
