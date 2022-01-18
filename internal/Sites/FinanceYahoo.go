@@ -15,7 +15,7 @@ func FinanceYahoo(urlGo string) {
 		"/FinanceYahoo" + Extensions.RandStringRunes(10) + ".jpg",
 	}
 	elements := []string{
-		"div#Lead-3-FinanceHeader-Proxy",
+		"div#Lead-3-FinanceHeader-Proxy > div",
 	}
 
 	Chrome.Screeenshot(ctx, urlGo, filenames, elements, cancel)
