@@ -21,7 +21,7 @@ func StartServer() {
 	router := mux.NewRouter()
 	filePrefix, _ := filepath.Abs("/var/www/investments-cryptanalysis-parsing/assets/img")
 	dir = filePrefix
-	router.PathPrefix("golang/assets/img/").Handler(http.StripPrefix("golang/assets/img/", http.FileServer(http.Dir(dir))))
+	router.PathPrefix("assets/img/").Handler(http.StripPrefix("golang/assets/img/", http.FileServer(http.Dir(dir))))
 
 	Router.Router(router)
 
