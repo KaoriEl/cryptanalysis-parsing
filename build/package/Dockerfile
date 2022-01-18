@@ -17,9 +17,16 @@ RUN apt-get update \
        gettext-base \
     && rm -rf /var/lib/apt/lists/*
 
+WORKDIR /app
 
-RUN go mod download
+WORKDIR /var/www/investments-cryptanalysis-parsing
 
-#RUN apk add --no-cache go
+RUN go build -o /app/widgets -v /var/www/investments-cryptanalysis-parsing/cmd/investments-cryptanalysis-parsing/main.go
 
-#CMD ["./apiserver"]
+COPY ./configs/.env /app/configs/.env
+
+WORKDIR /app
+
+
+CMD ["./widgets"]
+
