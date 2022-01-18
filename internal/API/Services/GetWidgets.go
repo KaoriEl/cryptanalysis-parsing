@@ -13,7 +13,7 @@ func GetWidgets() *Structures.WidgetScreenshots {
 		"FearAndGreed",
 		"FinanceYahoo",
 		"Finviz",
-		"FearAndGreedIndex",
+		"FeIndex",
 	}
 	var screenshots *Structures.WidgetScreenshots
 	m := map[string]string{}
@@ -29,7 +29,7 @@ func GetWidgets() *Structures.WidgetScreenshots {
 		FearAndGreed:      m["FearAndGreed"],
 		FinanceYahoo:      m["FinanceYahoo"],
 		Finviz:            m["Finviz"],
-		FearAndGreedIndex: m["FearAndGreedIndex"],
+		FearAndGreedIndex: m["FeIndex"],
 	}
 	return screenshots
 }
