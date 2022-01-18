@@ -13,6 +13,7 @@ func GetWidgets() *Structures.WidgetScreenshots {
 		"FearAndGreed",
 		"FinanceYahoo",
 		"Finviz",
+		"FearAndGreedIndex",
 	}
 	var screenshots *Structures.WidgetScreenshots
 	m := map[string]string{}
@@ -23,11 +24,12 @@ func GetWidgets() *Structures.WidgetScreenshots {
 
 	}
 	screenshots = &Structures.WidgetScreenshots{
-		DropstabBtc:   m["Dropstab-btcDominance"],
-		DropstabLongs: m["Dropstab-longsShorts"],
-		FearAndGreed:  m["FearAndGreed"],
-		FinanceYahoo:  m["FinanceYahoo"],
-		Finviz:        m["Finviz"],
+		DropstabBtc:       m["Dropstab-btcDominance"],
+		DropstabLongs:     m["Dropstab-longsShorts"],
+		FearAndGreed:      m["FearAndGreed"],
+		FinanceYahoo:      m["FinanceYahoo"],
+		Finviz:            m["Finviz"],
+		FearAndGreedIndex: m["FearAndGreedIndex"],
 	}
 	return screenshots
 }
