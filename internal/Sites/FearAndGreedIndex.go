@@ -14,7 +14,7 @@ func FearAndGreedIndex(urlGo string) {
 		"/FeIndex" + Extensions.RandStringRunes(10) + ".jpg",
 	}
 	elements := []string{
-		"div.columns > div:nth-child(2)",
+		"div.columns > div:nth-child(2) > div.box",
 	}
 	Chrome.Screeenshot(ctx, urlGo, filenames, elements, cancel)
 }
