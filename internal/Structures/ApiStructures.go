@@ -7,4 +7,5 @@ type WidgetScreenshots struct {
 	FinanceYahoo      string
 	Finviz            string
 	FearAndGreedIndex string
+	Cryptorank        string
 }

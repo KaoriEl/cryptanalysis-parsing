@@ -28,6 +28,9 @@ func FindSubstr(files string, find string, m map[string]string) map[string]strin
 		case "FeIndex":
 			m["FeIndex"] = files
 			break
+		case "Cryptorank":
+			m["Cryptorank"] = files
+			break
 		}
 	}
 	return m
