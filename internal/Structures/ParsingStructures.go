@@ -15,4 +15,5 @@ type RegexSites struct {
 	FinanceYahoo      string
 	Finviz            string
 	FearAndGreedIndex string
+	Cryptorank        string
 }
